@@ -7,5 +7,6 @@ max=99
  num4=$((($RANDOM% $max)+$min))
  num5=$((($RANDOM% $max)+$min))
 sum=$(($num1+$num2+$num3+$num4+$num5))
+avg=$(($sum/5))
+echo $avg
 
-echo $sum1
