@@ -1,9 +1,9 @@
 
-read -p "enter the number :" N
+#read -p "enter the number :" N
 
-inch=12
-feet=$((N/inch))
-echo $feet"ft"
+#inch=12
+#feet=$((N/inch))
+#echo $feet"ft"
 mtr=3
 acr=4046
  read -p "enter the length of the rectangle :" L
@@ -13,4 +13,5 @@ A=$((L*W))
 Area=$((A/mtr))
 plot=$((Area*P))
 areaofplot=$((plot/acr))
+echo $Area
 echo $areaofplot "acres"
