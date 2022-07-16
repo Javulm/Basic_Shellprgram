@@ -2,7 +2,7 @@
 flip=$(($RANDOM%2))
 if [ $flip -eq 1 ]
 then
-echo "head"
+echo "heads"
 else
-echo "tail"
+echo "tails"
 fi
