@@ -1,2 +1,2 @@
-
-echo $(( $RANDOM % 10 ))
+#! /bin/bash
+echo $(( $RANDOM % 6 +1 ))
