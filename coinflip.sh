@@ -5,4 +5,7 @@ then
 echo "heads"
 else
 echo "tails"
+echo "head"
+else
+echo "tail"
 fi
