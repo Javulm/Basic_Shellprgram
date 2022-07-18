@@ -1,16 +1,13 @@
-#! /bin/bash
-echo -n "Enter number: "
+echo -n "Enter number : "
 read n
  
-len=$(echo $n | wc -c)
-len=$(( $len - 1 ))
+length=$(echo $n | wc -c)
+length=$(( $length - 1 ))
  
 echo "Your number $n in words : "
-for (( i=1; i<=$len; i++ ))
+for (( i=1; i<=$length; i++ ))
 do
-   # get one digit at a time
     digit=$(echo $n | cut -c $i)
-   # use case control structure to find digit equivalent in words 
     case $digit in
         0) echo -n "zero " ;;
         1) echo -n "one " ;;
@@ -24,6 +21,3 @@ do
         9) echo -n "nine " ;;
     esac	
 done
- 
-# just print a new line
-echo ""
