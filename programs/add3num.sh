@@ -6,15 +6,19 @@ read b
 echo "enter the number c: "
 read c
 
-val=`expr $a + $b * $c`
-echo "a + b * c: $val"
+val=$(( $b * $c ))
+val1=$(( $val + $a ))
+echo "a + b * c: $val1"
 
-val1=`expr $c + $a / $b`
-echo "c % a / b: $val1"
+val2=$(( $a / $b ))
+val3=$(( $val2 + $c ))
+echo "c + a / b: $val3"
 
-val2=`expr $a % $b + $c`
-echo "a % b + c : $val2"
+val4=$(( $a % $b ))
+val5=$(( $val4 + $c ))
+echo "a % b + c : $val5"
 
-val3=`expr $a * $b + $c`
-echo "a * b + c : $val3"
+val6=$(( $a * $b ))
+val7=$(( $val6 + $c ))
+echo "a * b + c : $val7"
 
