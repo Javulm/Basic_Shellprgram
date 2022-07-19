@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 read -p "Enter a: " a
 read -p "Enter b: " b
@@ -14,12 +14,21 @@ echo "Result of 2nd expression: " $second
 echo "Result of 3rd expression: " $third
 echo "Result of 4th expression: " $fourth
 
-declare -A arr
-arr[0]=$first
-arr[1]=$second
-arr[2]=$third
-arr[3]=$fourth
+arr=(3 6 4 2)
+n=4
+echo ${arr[*]}
+#arr=($first $second $third $fourth)
 
-for(( i=0; i<; i++ ))
+for(( i=0; i<$n-1; i++ ))
 do 
-	for((j=0; 
+	for(( j=0; j<$n-1-$i; j++ ))
+	do
+		if [ ${arr[$j]} -gt ${arr[$((j+1))]} ]
+		then
+		temp=${arr[$j]}
+		arr[$j]=${arr[(($j+1))]}
+		arr[(($j+1))]=$temp
+		fi
+	done
+done
+echo ${arr[*]}
