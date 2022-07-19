@@ -15,20 +15,11 @@ echo "Result of 3rd expression: " $third
 echo "Result of 4th expression: " $fourth
 
 declare -A arr
-arr[num1]=$first
-arr[num2]=$second
-arr[num3]=$third
-arr[num4]=$fourth
-KEYS=$(
-for KEY in ${!arr[@]}; 
-do
-  echo "${arr[$KEY]}:::$KEY"
-done | sort | awk -F::: '{print $2}'
-)
+arr[0]=$first
+arr[1]=$second
+arr[2]=$third
+arr[3]=$fourth
 
-for
- do
-  VAL=${arr[$KEY]}
-  echo VAL=[$VAL]"
-done
-
+for(( i=0; i<; i++ ))
+do 
+	for((j=0; 
