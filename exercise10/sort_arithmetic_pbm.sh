@@ -1,33 +1,61 @@
-#!/bin/bash -x
+#!/bin/bash
+read -p "Enter first number: " num_1
+read -p "Enter second number: " num_2
+read -p "Enter third number: " num_3
+echo "The given three numbers are: $num_1 $num_2 $num_3"
 
-read -p "Enter a: " a
-read -p "Enter b: " b
-read -p "Enter c: " c
+first_computation=$(( num_1 + num_2 * num_3 ))
+#!/bin/bash
+read -p "Enter first number: " num_1
+read -p "Enter second number: " num_2
+read -p "Enter third number: " num_3
+echo "The given three numbers are: $num_1 $num_2 $num_3"
 
-first=`echo $a $b $c | awk '{t=$1+($2*$3)} {print t}'`
-second=`echo $a $b $c | awk '{t=$1%($2+$3)} {print t}'`
-third=`echo $a $b $c | awk '{t=$3+($1/$2)} {print t}'`
-fourth=`echo $a $b $c | awk '{t=($1*$2)+$3} {print t}'`
+first_computation=$(( num_1 + num_2 * num_3 ))
+second_computation=$(( num_1 * num_2 + num_3 ))
+third_computation=$(( num_3 + num_1 / num_2 ))
+fourth_computation=$(( num_1 % num_2 + num_3 ))
+echo "$num_1 + $num_2 * $num_3 = $first_computation"
+echo "$num_1 * $num_2 + $num_3 = $second_computation"
+echo "$num_3 + $num_1 / $num_2 = $third_computation"
+echo "$num_1 % $num_2 + $num_3 = $fourth_computation"
 
-echo "Result of 1st expression: " $first
-echo "Result of 2nd expression: " $second
-echo "Result of 3rd expression: " $third
-echo "Result of 4th expression: " $fourth
+declare -A dictionary
+declare -a array
 
-arr=($first $second $third $fourth)
-n=4
-#arr=(43 32 12 23)
-echo "original array is: ${arr[*]}"
-for(( i = 0; i < $n-1; i++ ))
+dictionary[first_computation]=$first_computation
+dictionary[second_computation]=$second_computation
+dictionary[third_computation]=$third_computation
+dictionary[fourth_computation]=$fourth_computation
+
+index=0
+for computation in ${!dictionary[@]}
 do 
-	for(( j = 0; j < $n-1-$i; j++ ))
-	do
-		if [ ${arr[$j]} -gt ${arr[$j+1]} ]
-		then
-		temp=${arr[$j]}
-		arr[$j]=${arr[$j+1]}
-		arr[$j+1]=$temp
-		fi
-	done
+    array[index++]=${dictionary[$computation]}
 done
-echo ${arr[*]}
+
+echo "The computation results array is"
+echo ${array[@]}
+
+size=${#array[@]}
+for(( i = 0; i < size - 1; i++ ))
+do
+    swapped=0
+    for(( j = 0; j < size - i - 1; j++))
+    do
+        if((array[j] > array[j+1]))
+        then
+            temp=${array[j]}
+            array[j]=${array[j+1]}
+            array[j+1]=$temp
+            swapped=1
+        fi
+    done
+    if((swapped==0))
+    then
+        break
+    fi
+done
+
+echo "The Computation results sorted in ascending order are: "
+echo ${array[@]}
